@@ -83,6 +83,11 @@ export const useGame = () => {
   const [isWin, setIsWin] = useState(false)
   const wordsCharsMapRef = useRef<Map<string, number[]>>(new Map())
   const panIndexRef = useRef(-1)
+  const [todaysPan, setTodaysPan] = useState<{
+    word: string
+    date: number
+    img: string
+  }>({ word: '', date: 0, img: '' })
 
   useEffect(() => {
     if (noMorePans()) {
@@ -103,6 +108,7 @@ export const useGame = () => {
 
     setAttempts(createAttempts(wordArr))
     setWordArr(wordArr)
+    setTodaysPan(todaysPan)
     setIsInited(true)
   }, [])
 
@@ -220,5 +226,6 @@ export const useGame = () => {
     isWin,
     handleSubmitAttempt,
     handleDelete,
+    todaysPan,
   }
 }
