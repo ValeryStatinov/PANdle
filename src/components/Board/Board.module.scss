@@ -1,0 +1,123 @@
+.container {
+  width: 100%;
+}
+
+.attempt {
+  display: flex;
+  gap: 6px;
+
+  & + & {
+    margin-top: 6px;
+  }
+}
+
+@keyframes panAnimation {
+  0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+  }
+
+  50% {
+    transform: rotateX(-90deg);
+  }
+
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+@keyframes correct {
+  0% {
+    background: transparent;
+  }
+
+  50% {
+    background: transparent;
+  }
+
+  100% {
+    background: #ceffd2;;
+  }
+}
+
+@keyframes present {
+  0% {
+    background: transparent;
+  }
+
+  50% {
+    background: transparent;
+  }
+
+  100% {
+    background: #FFFAC4;
+  }
+}
+
+@keyframes pan {
+  0% {
+    background: transparent;
+    background-size: 300% 300%;
+  }
+
+  48% {
+    background: transparent;
+    background-size: 300% 300%;
+  }
+
+  52% {
+    background: linear-gradient(-45deg, rgb(132, 255, 161), rgb(150, 215, 255) 40%, rgb(167, 161, 255), rgb(200, 157, 255), rgb(247, 142, 255));
+    background-size: 300% 300%;
+  }
+
+  100% {
+    background: linear-gradient(-45deg, rgb(132, 255, 161), rgb(150, 215, 255) 40%, rgb(167, 161, 255), rgb(200, 157, 255), rgb(247, 142, 255));
+    background-size: 300% 300%;
+  }
+}
+
+.tile {
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 10px;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 38px;
+  text-transform: uppercase;
+  box-shadow: 0 0 5px 0px #B38997;
+  border-radius: 2px;
+
+  &__open {
+    animation: flip 0.6s ease-in forwards;
+    background-color: rgba(179, 137, 151, 0.1);
+  }
+
+  &__correct {
+    animation: flip 0.6s ease-in forwards, correct 0.6s ease-in forwards;
+  }
+
+  &__present {
+    animation: flip 0.6s ease-in forwards, present 0.6s ease-in forwards;
+  }
+
+  &__pan {
+    animation: panAnimation 15s infinite alternate, flip 0.6s ease-in forwards, pan 0.6s ease-in forwards;
+  }
+}

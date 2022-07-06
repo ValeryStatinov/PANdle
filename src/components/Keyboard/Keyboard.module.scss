@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.spacer {
+  flex-grow: 0.5;
+  flex-shrink: 0;
+  flex-basis: 10px;
+}
+
+.controlKey {
+  flex-grow: 1.5;
+  flex-shrink: 0;
+  flex-basis: 30px;
+}
