@@ -17,6 +17,16 @@
   animation: backdropAppear 2s ease-in forwards;
 }
 
+@keyframes modalAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 .modal {
   position: fixed;
   z-index: 2;
@@ -32,8 +42,8 @@
   background-color: #FFDEE9;
   background-image: linear-gradient(105deg, #d6fffc -15%, #FFDEE9 100%);
   text-align: center;
-  transform: translate(-50%, -50%);
   border-radius: 6px;
+  animation: modalAppear 1s ease-in forwards;
 }
 
 .panPhoto {
