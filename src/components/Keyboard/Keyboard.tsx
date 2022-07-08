@@ -14,27 +14,28 @@ type Props = {
   handleCharInput: (char: string) => void
   handleSubmitAttempt: () => void
   handleDelete: () => void
+  isWronglyUsedKey: (char: string) => boolean
 }
 
-export const Keyboard = ({ handleCharInput, handleSubmitAttempt, handleDelete }: Props) => {
+export const Keyboard = ({ handleCharInput, handleSubmitAttempt, handleDelete, isWronglyUsedKey }: Props) => {
   return (
     <div className={cx('container')}>
       <div className={cx('row')}>
         {row1.map((key) => (
-          <Key key={key} char={key} onClick={handleCharInput} />
+          <Key key={key} char={key} onClick={handleCharInput} wronglyUsed={isWronglyUsedKey(key)} />
         ))}
       </div>
       <div className={cx('row')}>
         <div className={cx('spacer')} />
         {row2.map((key) => (
-          <Key key={key} char={key} onClick={handleCharInput} />
+          <Key key={key} char={key} onClick={handleCharInput} wronglyUsed={isWronglyUsedKey(key)} />
         ))}
         <div className={cx('spacer')} />
       </div>
       <div className={cx('row')}>
         <Key char="enter" onClick={handleSubmitAttempt} className={cx('controlKey')} />
         {row3.map((key) => (
-          <Key key={key} char={key} onClick={handleCharInput} />
+          <Key key={key} char={key} onClick={handleCharInput} wronglyUsed={isWronglyUsedKey(key)} />
         ))}
         <Key char="del" onClick={handleDelete} className={cx('controlKey')} />
       </div>

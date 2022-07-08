@@ -82,6 +82,7 @@ export const useGame = () => {
   })
   const [isWin, setIsWin] = useState(false)
   const wordsCharsMapRef = useRef<Map<string, number[]>>(new Map())
+  const wronglyUsedCharsMapRef = useRef<Set<string>>(new Set())
   const panIndexRef = useRef(-1)
   const [todaysPan, setTodaysPan] = useState<{
     word: string
@@ -161,9 +162,23 @@ export const useGame = () => {
     setAttempts((cur) => {
       const newSubmitted = [...cur.submitted, cur.current]
 
+      if (newSubmitted.length === 6) {
+        return {
+          submitted: newSubmitted,
+          current: [],
+          rest: [],
+        }
+      }
+
       const newCurrent = new Array(wordArr.length).fill('') as string[]
 
       const newRest = [...cur.rest].slice(0, cur.rest.length - 1)
+
+      cur.current.forEach((char) => {
+        if (wordsCharsMapRef.current.has(char)) return
+
+        wronglyUsedCharsMapRef.current.add(char)
+      })
 
       return {
         submitted: newSubmitted,
@@ -192,6 +207,10 @@ export const useGame = () => {
       }
     })
   }, [attempts, isWin, wordArr.length])
+
+  const isWronglyUsedKey = (char: string) => {
+    return wronglyUsedCharsMapRef.current.has(char)
+  }
 
   useEffect(() => {
     const handle = (event: KeyboardEvent) => {
@@ -227,5 +246,6 @@ export const useGame = () => {
     handleSubmitAttempt,
     handleDelete,
     todaysPan,
+    isWronglyUsedKey,
   }
 }

@@ -21,6 +21,7 @@ export const App = () => {
     handleSubmitAttempt,
     handleDelete,
     todaysPan,
+    isWronglyUsedKey,
   } = useGame()
 
   return (
@@ -37,6 +38,7 @@ export const App = () => {
                 handleCharInput={handleCharInput}
                 handleSubmitAttempt={handleSubmitAttempt}
                 handleDelete={handleDelete}
+                isWronglyUsedKey={isWronglyUsedKey}
               />
             </>
           )}
