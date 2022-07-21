@@ -37,7 +37,6 @@
   justify-content: center;
   align-items: center;
   width: 300px;
-  height: 400px;
   padding: 10px 8px;
   background-color: #FFDEE9;
   background-image: linear-gradient(105deg, #d6fffc -15%, #FFDEE9 100%);
@@ -48,4 +47,55 @@
 
 .panPhoto {
   height: 200px;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  16% {
+    transform: rotateZ(6deg) scale(1.1);
+  }
+
+  32% {
+    transform: rotateZ(0deg) scale(1.15);
+  }
+
+  48% {
+    transform: rotateZ(-6deg) scale(1.2);
+  }
+
+  64% {
+    transform: rotateZ(0) scale(1.2);
+  }
+
+  80% {
+    transform: rotateZ(6deg) scale(1.15);
+  }
+
+  96% {
+    transform: rotateZ(3deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotateZ(0) scale(1);
+  }
+}
+
+.share {
+  width: 120px;
+  height: 35px;
+  border: none;
+  background-color: #92ACB3;
+  outline: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  transition: all 0.08s ease;
+
+  &__shake {
+    background-color: #7e969d;
+    animation: shake 0.3s ease forwards;
+  }
 }

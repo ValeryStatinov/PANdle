@@ -46,7 +46,7 @@ export const App = () => {
       ) : (
         <div>Loading...</div>
       )}
-      {isWin && <WinModal todaysPan={todaysPan} />}
+      {isWin && <WinModal todaysPan={todaysPan} attempts={attempts} getTileType={getTileType} />}
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import classnames from 'classnames/bind'
 import { differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns'
+import { Attempts, TileType } from 'hooks/useGame'
 import React, { useEffect, useRef, useState } from 'react'
 
 import styles from './WinModal.module.scss'
@@ -12,11 +13,14 @@ type Props = {
     date: number
     img: string
   }
+  attempts: Attempts
+  getTileType: (char: string, index: number) => TileType
 }
 
-export const WinModal = ({ todaysPan }: Props) => {
+export const WinModal = ({ todaysPan, attempts, getTileType }: Props) => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const tomorrowRef = useRef(new Date())
+  const [buttonAnimate, setButtonAnimate] = useState(false)
 
   useEffect(() => {
     const tomorrow = new Date()
@@ -35,6 +39,49 @@ export const WinModal = ({ todaysPan }: Props) => {
 
     return () => clearInterval(interval)
   }, [])
+
+  const handleShare = () => {
+    setButtonAnimate(true)
+    let shareString = 'I guessed a PANdle today!\n'
+
+    for (const attempt of attempts.submitted) {
+      for (let i = 0; i < attempt.length; i++) {
+        const char = attempt[i]
+        const tileType = getTileType(char, i)
+
+        switch (tileType) {
+          case 'correct': {
+            shareString += '🟩'
+            break
+          }
+
+          case 'normal': {
+            shareString += '⬜'
+            break
+          }
+
+          case 'pan': {
+            shareString += '🟪'
+            break
+          }
+
+          case 'present': {
+            shareString += '🟨'
+            break
+          }
+        }
+      }
+
+      shareString += '\n'
+    }
+
+    if (navigator.share !== undefined) {
+      void navigator.share({ text: shareString })
+    } else {
+      void navigator.clipboard.writeText(shareString)
+      setTimeout(() => alert('Copied to clipboard'), 350)
+    }
+  }
 
   let hours = String(differenceInHours(tomorrowRef.current, currentDate))
   let minutes = String(differenceInMinutes(tomorrowRef.current, currentDate) % 60)
@@ -66,6 +113,13 @@ export const WinModal = ({ todaysPan }: Props) => {
           Next PANdle in <br />
           {hours}:{minutes}:{seconds}
         </h3>
+        <button
+          className={cx('share', { share__shake: buttonAnimate })}
+          onClick={handleShare}
+          onAnimationEnd={() => setButtonAnimate(false)}
+        >
+          Share
+        </button>
       </div>
     </>
   )

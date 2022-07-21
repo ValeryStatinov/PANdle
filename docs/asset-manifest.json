@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/PANdle/static/css/main.2d071361.css",
-    "main.js": "/PANdle/static/js/main.92118f56.js",
+    "main.css": "/PANdle/static/css/main.8edc7b4f.css",
+    "main.js": "/PANdle/static/js/main.3922d9fb.js",
     "static/js/787.32df8026.chunk.js": "/PANdle/static/js/787.32df8026.chunk.js",
     "static/media/panPhoto42.jpeg": "/PANdle/static/media/panPhoto42.b4434a3361eea6910acb.jpeg",
     "static/media/panPhoto65.jpeg": "/PANdle/static/media/panPhoto65.b0bf48f434e5e5507abc.jpeg",
@@ -71,12 +71,12 @@
     "static/media/panPhoto48.jpeg": "/PANdle/static/media/panPhoto48.13c4a63362001288030c.jpeg",
     "static/media/panPhoto27.jpeg": "/PANdle/static/media/panPhoto27.dae765e06b1c4116c98b.jpeg",
     "index.html": "/PANdle/index.html",
-    "main.2d071361.css.map": "/PANdle/static/css/main.2d071361.css.map",
-    "main.92118f56.js.map": "/PANdle/static/js/main.92118f56.js.map",
+    "main.8edc7b4f.css.map": "/PANdle/static/css/main.8edc7b4f.css.map",
+    "main.3922d9fb.js.map": "/PANdle/static/js/main.3922d9fb.js.map",
     "787.32df8026.chunk.js.map": "/PANdle/static/js/787.32df8026.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d071361.css",
-    "static/js/main.92118f56.js"
+    "static/css/main.8edc7b4f.css",
+    "static/js/main.3922d9fb.js"
   ]
 }
